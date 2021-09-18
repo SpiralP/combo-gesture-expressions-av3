@@ -373,6 +373,8 @@ namespace Hai.ComboGesture.Scripts.Editor.Internal
             {
                 transition.AddCondition(IsEqualTo, (float) permutation.Left, SharedLayerUtils.GestureLeft);
                 transition.AddCondition(IsEqualTo, (float) permutation.Right, SharedLayerUtils.GestureRight);
+                SharedLayerUtils.CreateParamIfNotExists(_animatorController, "PauseExpressions", AnimatorControllerParameterType.Bool);
+                transition.AddCondition(AnimatorConditionMode.IfNot, 0.0f, "PauseExpressions");
             }
             if (_activityStageName != null && stageValue != null)
             {
